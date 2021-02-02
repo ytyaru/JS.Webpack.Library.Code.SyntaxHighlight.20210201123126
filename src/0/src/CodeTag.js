@@ -1,3 +1,4 @@
+import Clipboard from 'clipboard'
 import CodeViewer from './CodeViewer.js'
 export default class CodeTag {
     static parse() {
@@ -6,7 +7,8 @@ export default class CodeTag {
         codes.forEach((code, index) => {
             CodeViewer.create(code, index, CLASS_COPY_BUTTON);
         });
-        const clipboard = new ClipboardJS(`.${CLASS_COPY_BUTTON}`);
+//        const clipboard = new ClipboardJS(`.${CLASS_COPY_BUTTON}`);
+        const clipboard = new Clipboard(`.${CLASS_COPY_BUTTON}`);
         clipboard.on('success', (e) => {
             document.getSelection().empty();
         });
